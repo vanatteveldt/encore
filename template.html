@@ -9,7 +9,7 @@
     <div class="container">
       <div class="maingrid">
         <div class="row gridheader">
-          <div class="notile"><span class="seed">{{seed}}</span></div>
+          <div class="notile"><a href="?seed={{seed}}" class="seed">{{seed}}</a></div>
           <div class="notile"></div>
           {% for colname in colnames %}
           <div class="tile headertile {{'hcolumn' if colname=='H' else ''}}">{{colname}}</div>

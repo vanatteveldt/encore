@@ -11,12 +11,6 @@ def shuffle(x):
     random.shuffle(x)
     return x
 
-if len(sys.argv) > 1:
-    seed = sys.argv[1]
-else:
-    seed = ''.join(random.choice('1234567890abcdefghijkmnopqrstuvwxyz') for _ in range(6))
-
-random.seed(seed)
 nrows = 7
 ncols = 15
 rowgifts = ["🎁", "💣", "❤️",  "💣", "🎁", "❤️","💣"]*2
@@ -171,7 +165,9 @@ def symbol_loc(path, symbols, check_symbol=None):
             continue
         return x, y
 
-def get_board():
+def get_board(seed):
+    if seed:
+        random.seed(seed)
     grid, symbols = None, None
     while not grid:
         grid, symbols = gen()
