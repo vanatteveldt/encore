@@ -1,0 +1,188 @@
+@media print {
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    background-color: lightgrey !important;
+  }
+}
+
+.container {
+  display: flex;
+}
+.rcrow {
+  display: flex;
+  height: 30px;
+}
+.rcrow > div {
+  line-height: 25px !important;
+  width: 30px;
+}
+
+.rcrow > div > div {
+  width: 30px;
+  height: 100%;
+}
+.scoretoprow {
+  margin-top: 6px;
+}
+.scorerow {
+  display: flex;
+  height: 30px;
+}
+.scoreheader {
+  width: 56px;
+  text-align: right;
+  line-height: 30px;
+}
+.scorevalue {
+  background-color: white;
+  width: 64px;
+  margin-left: 6px;
+  margin-bottom: 2px;
+  border-radius: 10px;
+}
+body {
+  background-color: lightgrey;
+  font-weight: 900;
+  text-align: center;
+  font-family: sans-serif;
+}
+.maingrid {
+  width: 540px;
+}
+.row {
+  height: 30px;
+  display: flex;
+  padding: 0px;
+  margin: 0px;
+  color: white;
+}
+.headertile {
+  background-color: white !important;
+  color: black;
+  border-width: 0px !important;
+}
+.headertile.hcolumn {
+  color: red;
+}
+.symbol {
+  filter: grayscale(50%);
+  filter: opacity(25%);
+}
+
+.headertile {
+  line-height: 25px !important;
+}
+.row > div {
+  flex-basis: 100%;
+  border: 2px solid black;
+  line-height: 21px;
+}
+.notile {
+  border-width: 0px !important;
+  margin: 0px;
+}
+.seed {
+  position: absolute;
+  text-align: left;
+  font-size: small;
+  margin-left: -10px;
+}
+.tile.hcolumn {
+  border-color: white;
+}
+.row > div > div {
+  height: 100%;
+}
+.hearts {
+  font-size: x-large;
+  line-height: 30px;
+  margin-left: 10px;
+  margin-right: -12px;
+  margin-top: 6px;
+}
+.boxrow {
+  height: 30px;
+  display: flex;
+  padding: 0px;
+  margin: 0px;
+  margin-left: 56px;
+  margin-right: 28px;
+  color: black;
+  margin-top: 6px;
+  align-items: center;
+}
+.boxrow > div {
+  width: 25px;
+  height: 25px;
+  margin-left: 6px;
+  margin-right: 6px;
+  font-weight: bolder;
+  font-size: large;
+}
+.boxrow > div:first-child {
+  border: 1.5px solid black;
+  border-radius: 50%;
+}
+.wildcardrow {
+  background-color: white;
+  height: 30px;
+  display: flex;
+  padding: 0px;
+  margin: 0px;
+  margin-left: 56px;
+  margin-right: 228px;
+  color: black;
+  border-radius: 5px;
+  margin-top: 6px;
+  align-items: center;
+}
+.wildcardrow > div {
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  margin-left: 6px;
+  margin-right: 6px;
+  font-weight: bolder;
+  font-size: x-large;
+}
+
+.tile {
+  margin: 0.5px;
+  border-radius: 5px;
+  padding: 1px;
+}
+.tile > div {
+  border-radius: 5px;
+}
+.tile-red {
+  background-color: hsl(0, 70%, 60%);
+}
+.tile-red > div {
+  background-color: hsl(0, 70%, 70%);
+}
+.tile-green {
+  background-color: hsl(110, 50%, 50%);
+}
+.tile-green > div {
+  background-color: hsl(110, 50%, 60%);
+}
+.tile-yellow {
+  background-color: hsl(50, 70%, 60%);
+}
+.tile-yellow > div {
+  background-color: hsl(50, 70%, 70%);
+}
+.tile-blue {
+  background-color: hsl(220, 70%, 60%);
+}
+.tile-blue > div {
+  background-color: hsl(220, 70%, 70%);
+}
+.tile-orange {
+  background-color: hsl(30, 80%, 50%);
+}
+.tile-orange > div {
+  background-color: hsl(30, 80%, 60%);
+}
