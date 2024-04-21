@@ -113,13 +113,18 @@ def gen():
     grid, symbols = {}, {}
     placed = set()
     stars = set()
-    for color in colors:
-        stars |= {(color, i) for i in shuffle(range(1,7))[:3]}
+    for i, color in enumerate(shuffle(colors)):
+        if i == 0:
+            stars |= {(color, i) for i in [1] + shuffle(range(1,7))[:2]}
+        elif i == 1:
+            stars |= {(color, i) for i in [6] + shuffle(range(1,7))[:2]}
+        else:
+            stars |= {(color, i) for i in [1 , 6] + shuffle(range(1,7))[:1]}
     # h-column
 
     for i, col in enumerate(shuffle(colors)):
         value = colors.index(col)
-        n = 5 if i == 0 else random.randint(2,5)
+        n = 5-i if i <= i else random.randint(2,5)
         start = get_empty(grid, shuffle((8, i) for i in range(1,8)))
         if not start:
             return None, None
@@ -129,7 +134,7 @@ def gen():
         else:
             return None, None
         placed.add((value, n))
-    # 6 tiles
+    # Other tiles
     for ntiles in [6,5,4,3,2,1]:
         for col in shuffle(colors):
             value = colors.index(col)
