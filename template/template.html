@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="static/keer.css" />
+    <script src="https://unpkg.com/twemoji@latest/dist/twemoji.min.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="container" style="padding-left: 2em">
+      <a class="motto" href="?seed={{seed}}" style="grid-column: span 2"
+        ><div class="plaatjes">
+          <img class="header" src="static/header.png" />
+          <img src="static/frame1.png" /></div
+      ></a>
+      {% include 'maingrid.html' %}{% include 'rightcolumn.html' %}
+    </div>
+    <div class="container" style="padding-top: 5em; padding-left: 2em">
+      <a class="motto" href="?seed={{seed}}" style="grid-column: span 2"
+        ><div class="plaatjes">
+          <img class="header" src="static/header.png" />
+          <img src="static/frame1.png" /></div
+      ></a>
+      {% include 'maingrid.html' %}{% include 'rightcolumn.html' %}
+    </div>
+  </body>
+</html>

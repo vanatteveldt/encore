@@ -4,7 +4,7 @@ import random
 import sys
 from jinja2 import Environment, PackageLoader, select_autoescape, FileSystemLoader
 env = Environment(
-    loader=FileSystemLoader(searchpath="./"),
+    loader=FileSystemLoader(searchpath="./template/"),
 )
 def shuffle(x):
     x = list(x)
@@ -23,7 +23,7 @@ moves = [(1,0), (-1,0), (0,1), (0,-1)]
 adjacency = [ (1,-1), (1,0),  (1,1),
               (0,-1),         (0,1),
              (-1,-1), (-1,0), (-1,1)]
-scores = ["Bonus", "Rows", "Cols", "❤️", "! (1)", "🎁 (2)", "☆ (-2)", "Total"]
+scores = ["Frames", "Devices", "Elementen", "Stapeltjes (❤️)", "Nudges (ⓘ×1)", "T-Strats (🎁×2)", "Concu's (☆×-2)", "Total"]
 
 def getsums(coords):
     colsums, rowsums = defaultdict(int), defaultdict(int)
@@ -56,7 +56,7 @@ def find_path(grid, x,y, n, value, path=None):
     returns a set of coordinates or None if not path could be found
     """
     if path is None:
-        path = set()
+        path = []
     # Check that the current spot is empty
     if (x,y) in grid or (x,y) in path:
         return None
@@ -67,7 +67,7 @@ def find_path(grid, x,y, n, value, path=None):
     for (dx, dy) in adjacency:
         if grid.get((x+dx, y+dy)) == value:
             return None
-    path = path | {(x,y)}
+    path = path + [(x,y)]
     if n == 1:
         return path
     for (dx, dy) in shuffle(moves):
@@ -109,17 +109,17 @@ def ordered_empty(grid):
     return sorted(scores.keys(), key=lambda coord: scores[coord])
 
 def gen():
-    print("---")
+    print(".", end="", flush=True)
     grid, symbols = {}, {}
     placed = set()
     stars = set()
     for i, color in enumerate(shuffle(colors)):
         if i == 0:
-            stars |= {(color, i) for i in [1] + shuffle(range(1,7))[:2]}
+            stars |= {(color, i) for i in [1] + shuffle(range(2,7))[:2]}
         elif i == 1:
-            stars |= {(color, i) for i in [6] + shuffle(range(1,7))[:2]}
+            stars |= {(color, i) for i in [6] + shuffle(range(1,6))[:2]}
         else:
-            stars |= {(color, i) for i in [1 , 6] + shuffle(range(1,7))[:1]}
+            stars |= {(color, i) for i in [1 , 6] + shuffle(range(2,6))[:1]}
     # h-column
 
     for i, col in enumerate(shuffle(colors)):
@@ -144,9 +144,9 @@ def gen():
             for (x,y) in ordered_empty(grid):
                 if path := place(grid, x,y, ntiles, colors.index(col)):
                     if ntiles == 6:
-                        add_symbol(path, symbols, "🎁")
+                        symbols[path[0]] = "🎁"
                     if (col, ntiles) in stars:
-                        add_symbol(path, symbols, "☆")
+                        symbols[path[-1]] = "☆"
                     break
             else:
                 return None, None
@@ -170,13 +170,20 @@ def symbol_loc(path, symbols, check_symbol=None):
             continue
         return x, y
 
-def get_board(seed):
-    if seed:
-        random.seed(seed)
-    grid, symbols = None, None
-    while not grid:
-        grid, symbols = gen()
+def random_seed():
+    return ''.join(random.choice('1234567890abcdefghijkmnopqrstuvwxyz') for _ in range(8))
 
+
+def get_board(seed):
+    if not seed:
+        seed = random_seed()
+    while True:
+        random.seed(seed)
+        grid, symbols = gen()
+        if grid:
+            break
+        seed = random_seed()
+    print(seed)
     template = env.get_template("template.html")
     html = template.render(**globals(), **locals())
     return html

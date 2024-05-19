@@ -1,0 +1,13 @@
+<div class="rightcolumn">
+  {%for color in colors %}
+  <div style="grid-column-start: 2" class="tile headertile  tile-{{color}}">
+    <div>5</div>
+  </div>
+  <div class="tile headertile tile-{{color}}">
+    <div>3</div>
+  </div>
+  {%endfor %} {% for score in scores %}
+  <div class="scoreheader">{{score}}</div>
+  <div class="scorevalue">&nbsp</div>
+  {% endfor %}
+</div>
