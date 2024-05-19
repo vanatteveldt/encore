@@ -65,6 +65,7 @@ body {
 .plaatjes {
   padding: 0px;
   margin: 0px;
+  margin-top: -10px;
   color: white;
   width: 100%;
 }
@@ -157,6 +158,35 @@ body {
 }
 .hearts img {
   width: 30px;
+}
+.tile img {
+  vertical-align: middle;
+  width: 18px;
+}
+.scoreheader img {
+  vertical-align: middle;
+  width: 18px;
+}
+.rowheart:first-of-type {
+  border: 2px solid black;
+  border-radius: 50%;
+  margin-left: -3px;
+  margin-top: -3px;
+  margin-bottom: -3px;
+  margin-right: 4px;
+  padding: 3px;
+}
+
+.rowheart {
+  vertical-align: middle;
+  width: 25px;
+  margin-right: 10px;
+}
+.scoreheart {
+  vertical-align: middle;
+  width: 25px;
+  filter: grayscale(50%);
+  filter: opacity(25%);
 }
 .symbol {
   font-family: "OpenMoji";

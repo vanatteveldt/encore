@@ -1,4 +1,5 @@
 <div class="rightcolumn">
+  <img src="static/frames.png" style="height: 120px; position: absolute; z-index: -1; left: 640px; margin-top: -70px" />
   {%for color in colors %}
   <div style="grid-column-start: 2" class="tile headertile  tile-{{color}}">
     <div>5</div>
@@ -6,8 +7,21 @@
   <div class="tile headertile tile-{{color}}">
     <div>3</div>
   </div>
-  {%endfor %} {% for score in scores %}
-  <div class="scoreheader">{{score}}</div>
+  {%endfor %}
+  <div class="scoreheader">Frames</div>
   <div class="scorevalue">&nbsp</div>
-  {% endfor %}
+  <div class="scoreheader">Devices</div>
+  <div class="scorevalue">&nbsp</div>
+  <div class="scoreheader">Elementen</div>
+  <div class="scorevalue">&nbsp</div>
+  <div class="scoreheader">Stapeltjes (<img src="static/heart.png" />)</div>
+  <div class="scorevalue">&nbsp</div>
+  <div class="scoreheader">Nudges (<img src="static/nudge.png" />×1)</div>
+  <div class="scorevalue">&nbsp</div>
+  <div class="scoreheader">Toobss (<img src="static/toob.png" />×2)</div>
+  <div class="scorevalue">&nbsp</div>
+  <div class="scoreheader">Concu's (<img src="static/star-black.png" />×-2</div>
+  <div class="scorevalue">&nbsp</div>
+  <div class="scoreheader">Totaal</div>
+  <div class="scorevalue">&nbsp</div>
 </div>

@@ -20,10 +20,13 @@
   {% for rowname in rownames %} {% set y = loop.index %}
   <!-- Score rows-->
   <div style="grid-column: 1" class="tile headertile">5</div>
-  <div class="tile headertile">{{rowgifts[y-1]}}</div>
+  <div class="tile headertile"><img src="static/{{rowgifts[y-1]}}.png" /></div>
   {% for colname in colnames %}
   <div class="tile scoretile tile-{{colors[grid[loop.index, y]]}} {{'hcolumn' if colname=='H' else ''}}">
-    <div>{{symbols.get((loop.index,y), "&nbsp;")}}</div>
+    <div>
+      {% set s = symbols.get((loop.index,y), "&nbsp;") %} {% if s == '🎁' %}<img src="static/toob.png" />{% else %} {%
+      if s == '☆' %}<img src="static/star.png" />{% else %} {{s}}{% endif %}{% endif %}
+    </div>
   </div>
   {% endfor %}
   <div class="headertile tile">{{rowname}}</div>
@@ -31,7 +34,7 @@
   <div style="grid-column: 2 2; grid-row: span 5" class="hearts">
     <img
       src="static/stapeltjes.png"
-      style="width: 50px; left: 15px; margin-top: -10px; position: absolute; z-index: -1"
+      style="width: 60px; left: 5px; margin-top: -15px; position: absolute; z-index: -1"
     />
     <img style="padding-top: 10px" src="static/heart.png" /> <br />
     <img src="static/heart.png" /> <br />
@@ -44,7 +47,9 @@
   {% endfor %} {% for colname in colnames %}
   <div style="grid-column: {{2+loop.index}}" class="tile headertile">{{colpoint2[loop.index-1]}}</div>
   {% endfor %}{% for colname in colnames %}
-  <div style="grid-column: {{2+loop.index}}" class="tile headertile heart"><span class="symbol">❤️</span></div>
+  <div style="grid-column: {{2+loop.index}}" class="tile headertile heart">
+    <img class="scoreheart" src="static/heart.png" />
+  </div>
   {% endfor %}
   <div class="wildcardrow">
     <img height="50px" style="margin-top: -10px; margin-left: -10px; margin-right: -15px" src="static/nudges.png" />
@@ -54,8 +59,13 @@
   </div>
   <div class="boxrow">
     {% for i in range(9) %}
-    <div><span class="box">🎁</span></div>
+    <img class="rowheart" src="static/toob.png" />
     {% endfor %}
-    <img height="50px" style="margin-top: -10px; margin-left: -10px; margin-right: -15px" src="static/strategie.png" />
+
+    <img
+      height="50px"
+      style="margin-top: -10px; margin-left: -10px; margin-right: -15px"
+      src="static/toobstrategie.png"
+    />
   </div>
 </div>

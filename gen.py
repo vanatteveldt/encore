@@ -13,7 +13,7 @@ def shuffle(x):
 
 nrows = 7
 ncols = 15
-rowgifts = ["🎁", "💣", "❤️",  "💣", "🎁", "❤️","💣"]*2
+rowgifts = ["toob", "bomb", "heart",  "bomb", "toob", "heart","bomb"]
 colpoints = [5, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 5]
 colpoint2 = [3, 2, 2, 2, 1, 1, 1, 0, 1, 1, 1, 2, 2, 2, 3]
 colnames = [chr(65+i) for i in range(ncols)]
@@ -23,7 +23,6 @@ moves = [(1,0), (-1,0), (0,1), (0,-1)]
 adjacency = [ (1,-1), (1,0),  (1,1),
               (0,-1),         (0,1),
              (-1,-1), (-1,0), (-1,1)]
-scores = ["Frames", "Devices", "Elementen", "Stapeltjes (❤️)", "Nudges (ⓘ×1)", "T-Strats (🎁×2)", "Concu's (☆×-2)", "Total"]
 
 def getsums(coords):
     colsums, rowsums = defaultdict(int), defaultdict(int)
@@ -174,7 +173,7 @@ def random_seed():
     return ''.join(random.choice('1234567890abcdefghijkmnopqrstuvwxyz') for _ in range(8))
 
 
-def get_board(seed):
+def get_board(seed, motto=1, bottom=0):
     if not seed:
         seed = random_seed()
     while True:
