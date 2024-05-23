@@ -10,6 +10,8 @@ app = FastAPI() # This is what will be refrenced in config
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.get("/")
-async def root(seed: Optional[str]=None, motto: Optional[int]=1, bottom: Optional[int]=0):
+async def root(seed: Optional[str]=None, motto: Optional[int]=None, bottom: Optional[int]=0):
+    if not motto:
+        motto = random.randint(1,10)
     html = get_board(seed, motto, bottom)
     return HTMLResponse(html)
